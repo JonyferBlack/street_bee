@@ -108,6 +108,11 @@ from training import initialize_model
 model_ft, input_size = initialize_model(num_classes, model_ft, use_pretrained=True)
 model_ft.eval()
 
+#%%
+model_ft = model_ft.to(device)
+params_to_update = model_ft.parameters()
+
+
 #%% [markdown]
 # ### Init loaders
 
@@ -128,7 +133,7 @@ dataloaders_dict
 #%%
 plt.rcParams['figure.figsize'] = [4, 4]
 
-class_names = image_datasets['train'].classes
+class_names = np.array(image_datasets['train'].classes)
 
 from confmetrics import norm
 
@@ -140,10 +145,10 @@ for inputs, classes in dataloaders_dict['train']:
 
 #%% [markdown]
 # ### Train model
-
+training = False
 #%%
-from training import train_model
-
+if training:
+    from training import train_model
 
 #%%
 torch.cuda.empty_cache()
@@ -152,9 +157,6 @@ torch.cuda.empty_cache()
 # ## Train
 
 #%%
-model_ft = model_ft.to(device)
-params_to_update = model_ft.parameters()
-
 if debug:
     print("Params to learn:")
     for name,param in model_ft.named_parameters():
@@ -196,7 +198,10 @@ plt.show()
 
 
 #%%
-from utils import visualize_model
-visualize_model(model_ft, dataloaders_dict, device)
+from visutils import visualize_model
 
 
+#%%
+visualize_model(model_ft, dataloaders_dict, device, class_names, 6)
+
+#%%

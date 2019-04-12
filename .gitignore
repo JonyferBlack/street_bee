@@ -7,3 +7,4 @@ data_set
 *.tar.gz
 .vscode
 __pycache__
+*.jpg

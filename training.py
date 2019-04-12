@@ -71,10 +71,11 @@ def train_model(model, dataloaders, criterion, optimizer, device, num_epochs=25,
 
                 running_loss += loss.item() * inputs.size(0)
                 f2 += f2_score(preds, labels.data)
-                f1 += F1(preds, labels.data)
+                batch_f1 = F1(preds, labels.data)
+                f1 += batch_f1
                 batch_accuracy = torch.sum(preds==labels.data)
                 running_corrects += batch_accuracy
-                pbar.set_description(f"Phase {phase} | Loss {loss.item():.5f} | Acc {float(batch_accuracy) / len(labels.data):.4f} | f-1 {f1}")
+                pbar.set_description(f"Phase {phase} | Loss {loss.item():.5f} | Acc {float(batch_accuracy) / len(labels.data):.4f} | f-1 {batch_f1}")
             
             epoch_loss = running_loss / batch_count
             epoch_acc = running_corrects.double() / batch_count
