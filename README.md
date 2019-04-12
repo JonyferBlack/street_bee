@@ -6,7 +6,7 @@ Original task and data set: https://gist.github.com/donbobka/9d368b5161351fe4643
 
 Pre-trained model: https://drive.google.com/file/d/10cby89d0H1NSKJ-3X5fW2ISdNA4C63SQ/view?usp=sharing
 
-Processed data set:
+Processed data set: https://drive.google.com/file/d/1gg42WEmUrceDTGOclTOPAskcnwY9OAkp/view?usp=sharing
 
  If you want just check pretrained model
  * Open "StreetBee.TrainClassifier.[py\ipynb]". For better expirience use [VS Code\Jupyter Notebook]
