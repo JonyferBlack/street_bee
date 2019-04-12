@@ -1,0 +1,42 @@
+Epoch 0/7
+----------
+train Loss: 0.0027 Acc: 0.9994 F-beta score: 0.1180, F-1 score: 0.1617
+val Loss: 0.0805 Acc: 0.9851 F-beta score: 0.1178, F-1 score: 0.1615
+
+Epoch 1/7
+----------
+train Loss: 0.0029 Acc: 0.9994 F-beta score: 0.1180, F-1 score: 0.1617
+val Loss: 0.0758 Acc: 0.9851 F-beta score: 0.1178, F-1 score: 0.1614
+
+Epoch 2/7
+----------
+train Loss: 0.0026 Acc: 0.9995 F-beta score: 0.1180, F-1 score: 0.1617
+val Loss: 0.0831 Acc: 0.9847 F-beta score: 0.1179, F-1 score: 0.1616
+
+Epoch 3/7
+----------
+train Loss: 0.0027 Acc: 0.9994 F-beta score: 0.1180, F-1 score: 0.1617
+val Loss: 0.0864 Acc: 0.9846 F-beta score: 0.1179, F-1 score: 0.1614
+
+Epoch 4/7
+----------
+train Loss: 0.0022 Acc: 0.9995 F-beta score: 0.1180, F-1 score: 0.1617
+val Loss: 0.0883 Acc: 0.9855 F-beta score: 0.1179, F-1 score: 0.1616
+
+Epoch 5/7
+----------
+train Loss: 0.0019 Acc: 0.9996 F-beta score: 0.1180, F-1 score: 0.1617
+val Loss: 0.0825 Acc: 0.9860 F-beta score: 0.1178, F-1 score: 0.1614
+
+Epoch 6/7
+----------
+train Loss: 0.0018 Acc: 0.9996 F-beta score: 0.1180, F-1 score: 0.1617
+val Loss: 0.0869 Acc: 0.9851 F-beta score: 0.1178, F-1 score: 0.1615
+
+Epoch 7/7
+----------
+train Loss: 0.0014 Acc: 0.9998 F-beta score: 0.1180, F-1 score: 0.1616
+val Loss: 0.0888 Acc: 0.9860 F-beta score: 0.1179, F-1 score: 0.1616
+
+Training complete in 172m 13s
+Best val Acc: 0.985997

@@ -1,0 +1,9 @@
+/*.gz
+train
+data_set
+.ipynb_checkpoints
+*.pth
+*.rar
+*.tar.gz
+.vscode
+__pycache__
