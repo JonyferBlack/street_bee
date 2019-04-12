@@ -10,7 +10,7 @@ Processed data set: https://drive.google.com/file/d/1gg42WEmUrceDTGOclTOPAskcnwY
 
  If you want just check pretrained model
  * Open "StreetBee.TrainClassifier.[py\ipynb]". For better expirience use [VS Code\Jupyter Notebook]
- * Run all cells from beggining except Train and Save model
- * Go right to "Visualize test inference"
+ * Run all cells from beggining except "Train" and "Save model"
+ * Go run "Visualize test inference"
 
 ![alt text](https://github.com/JonyferBlack/street_bee/blob/master/logo.jpg)
