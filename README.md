@@ -17,16 +17,14 @@ Pre-trained model(ResNet50) [10 classes]: https://drive.google.com/file/d/10cby8
 Processed data set[10 classes]: https://drive.google.com/file/d/1gg42WEmUrceDTGOclTOPAskcnwY9OAkp/view?usp=sharing
 
 If you want just check pretrained model
-  * Open "StreetBee.TrainClassifier.[py\ipynb]". For better expirience use [VS Code\Jupyter Notebook]
-  * Run all cells from beggining except "Train" and "Save model"
-  * Go run "Visualize test inference"
+  * Open "StreetBee.Pipeline.ipynb". For better expirience use [VS Code\Jupyter Notebook]
 
 
-To create your own segmentation data set from scratch use "SemanticSegmentation_PrepareDataSet.ipynb" with Jupyter Notebook
-To train your own classification model from scratch use "StreetBee.TrainSemanticSegmentation.ipynb" with Jupyter Notebook
+* to create your own segmentation data set from scratch use "SemanticSegmentation_PrepareDataSet.ipynb" with Jupyter Notebook
+* to train your own classification model from scratch use "StreetBee.TrainSemanticSegmentation.ipynb" with Jupyter Notebook
 
-To create your own classification data set from scratch use "DataOps.ipynb" with Jupyter Notebook
-To train your own classification model from scratch use "StreetBee.TrainClassifier.[py\ipynb]" with Jupyter Notebook
+* to create your own classification data set from scratch use "DataOps.ipynb" with Jupyter Notebook
+* to train your own classification model from scratch use "StreetBee.TrainClassifier.[py\ipynb]" with Jupyter Notebook
 
   
 ![alt text](https://github.com/JonyferBlack/street_bee/blob/master/logo.jpg)
