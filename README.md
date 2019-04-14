@@ -19,9 +19,10 @@ Processed data set[10 classes]: https://drive.google.com/file/d/1gg42WEmUrceDTGO
 If you want just check pretrained model
   * Open "StreetBee.Pipeline.ipynb". For better expirience use [VS Code\Jupyter Notebook]
 
+-------------------------
 
 * to create your own segmentation data set from scratch use "SemanticSegmentation_PrepareDataSet.ipynb" with Jupyter Notebook
-* to train your own classification model from scratch use "StreetBee.TrainSemanticSegmentation.ipynb" with Jupyter Notebook
+* to train your own segmentation model from scratch use "StreetBee.TrainSemanticSegmentation.ipynb" with Jupyter Notebook
 
 * to create your own classification data set from scratch use "DataOps.ipynb" with Jupyter Notebook
 * to train your own classification model from scratch use "StreetBee.TrainClassifier.[py\ipynb]" with Jupyter Notebook
