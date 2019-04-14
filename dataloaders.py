@@ -11,14 +11,14 @@ import numpy as np
 
 
 class SimpleSemanticDataset(Dataset):
-    def __init__(self, path, do_norm = False):
+    def __init__(self, path, do_norm = False, img_dir='img', masks_dir = 'mask'):
         self.transform = ToTensor()
         if do_norm:
             self.norm = Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         else:
             self.norm = None
-        self.imgs = [imread(x) for x in glob(os.path.join(path,'imgs/*.png'))]
-        self.masks = [imread(x)[:, :, np.newaxis] for x in glob(os.path.join(path,'masks/*.png'))]
+        self.imgs = [imread(x) for x in glob(os.path.join(path, img_dir,'*.png'))]
+        self.masks = [imread(x)[:, :, np.newaxis] for x in glob(os.path.join(path, masks_dir,'*.png'))]
         
     def __len__(self):
         return len(self.imgs)
@@ -30,6 +30,20 @@ class SimpleSemanticDataset(Dataset):
         if not self.norm == None:
             img_tr = self.norm(img_tr)
         return img_tr, self.transform(mask)
+
+
+class TestDataset(Dataset):
+    def __init__(self, path):
+        self.transform = ToTensor()
+        self.imgs = [imread(x) for x in glob(os.path.join(path,'*.png'))]
+        
+    def __len__(self):
+        return len(self.imgs)
+    
+    def __getitem__(self, idx):
+        img = self.imgs[idx]
+        img_tr = self.transform(img)
+        return img_tr
 
 
 def init_data_loaders(input_size, data_dir, batch_size, image_sets = ['train', 'val', 'test']):
