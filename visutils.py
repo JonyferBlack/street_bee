@@ -47,11 +47,11 @@ def imshow(inp, title=None):
     plt.pause(0.001)  # pause a bit so that plots are updated
 
 
-def full_norm(input_):
+def full_norm(input_, norm = 255):
     min_ = input_.min() * -1 
     input_ += min_
     max_ = input_.max()
-    input_ *= 255/max_
+    input_ *= norm/max_
     return input_
 
 
