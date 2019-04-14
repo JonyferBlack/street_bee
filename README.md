@@ -6,7 +6,7 @@ Original task and data set: https://gist.github.com/donbobka/9d368b5161351fe4643
 
 ### Segmentation
 
-Pre-trained model(BiSeNet with ResNet18) [2 classes]: https://drive.google.com/file/d/1OX32k9x4I3tY0qA03EFVVLaAA0klwjeM/view?usp=sharing
+Pre-trained model(BiSeNet with ResNet18) [2 classes]: https://drive.google.com/file/d/18W9eIcK5jilDb3HA1obQhc9LhGTvIyfP/view?usp=sharing
 
 Processed data set[2 classes]: https://drive.google.com/file/d/1kKoOUPuhoBgNfjrWdKvjdapsp2TdIVu9/view?usp=sharing
 
@@ -19,7 +19,7 @@ Processed data set[10 classes]: https://drive.google.com/file/d/1gg42WEmUrceDTGO
 ### Usage
 
 If you want just check pretrained models
-  * Open "StreetBee.Pipeline.ipynb". For better expirience use [VS Code\Jupyter Notebook]
+  * Open "StreetBee.Pipeline.ipynb". For better expirience use [Jupyter Notebook\VS Code]
 
 -------------------------
 
