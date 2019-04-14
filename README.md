@@ -18,7 +18,7 @@ Processed data set[10 classes]: https://drive.google.com/file/d/1gg42WEmUrceDTGO
 
 ### Usage
 
-If you want just check pretrained model
+If you want just check pretrained models
   * Open "StreetBee.Pipeline.ipynb". For better expirience use [VS Code\Jupyter Notebook]
 
 -------------------------
