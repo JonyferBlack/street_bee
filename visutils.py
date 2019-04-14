@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+import cv2
 
 
 def visualize_model(model, dataloaders, device, class_names, num_images=6):
@@ -44,3 +45,25 @@ def imshow(inp, title=None):
     if title is not None:
         plt.title(title)
     plt.pause(0.001)  # pause a bit so that plots are updated
+
+
+def full_norm(input_):
+    min_ = input_.min() * -1 
+    input_ += min_
+    max_ = input_.max()
+    input_ *= 255/max_
+    return input_
+
+
+def draw_mask(input_, mask, threshold = 30):
+    mask = full_norm(mask)
+    ret, thresholded = cv2.threshold(mask.astype(np.uint8), threshold, 255, cv2.THRESH_BINARY)
+    thresholded = np.expand_dims(thresholded, axis = 2)
+    thresholded = thresholded.astype(np.uint8)
+    thresholded = np.concatenate((thresholded, thresholded, thresholded), axis = 2)
+    color_mask = thresholded.copy()
+    shape = thresholded.shape
+    color_mask[:,:,2] = np.zeros((shape[0],shape[1]), np.int8)
+    norm_input = full_norm(input_).astype(np.uint8)
+    output = cv2.addWeighted(norm_input, 1, color_mask, 0.3, 0)
+    return output
