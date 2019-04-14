@@ -8,7 +8,7 @@ Segmentation
 
 Pre-trained model(BiSeNet with ResNet18) [2 classes]: https://drive.google.com/file/d/1OX32k9x4I3tY0qA03EFVVLaAA0klwjeM/view?usp=sharing
 
-Processed data set[2 classes]: https://drive.google.com/file/d/1gg42WEmUrceDTGOclTOPAskcnwY9OAkp/view?usp=sharing
+Processed data set[2 classes]: https://drive.google.com/file/d/1kKoOUPuhoBgNfjrWdKvjdapsp2TdIVu9/view?usp=sharing
 
 Classification
 
