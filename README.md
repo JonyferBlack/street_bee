@@ -1,4 +1,4 @@
-# StreetBee. Training classification
+# StreetBee. Classification + Segmentation
 ### by AIvanov
  
 
