@@ -1,200 +1,98 @@
-                                                                                                                       
-
-Epoch [1/50] | Loss (train/val): 0.9226/0.6834  | Acc (train/val): 0.1329/0.1531
-
-                                                                                                                       
-
-Epoch [2/50] | Loss (train/val): 0.5430/0.6102  | Acc (train/val): 0.1336/0.1471
+Best acc now: [0.06425880828126064]
+Epoch [1/20] | Loss (train/val): 0.3220/0.2171  | Acc (train/val): 0.0132/0.0643
 
                                                                                                                        
 
-Epoch [3/50] | Loss (train/val): 0.4868/0.5547  | Acc (train/val): 0.1334/0.1439
+Best acc now: [0.13167252186687387]
+Epoch [2/20] | Loss (train/val): 0.1709/0.1410  | Acc (train/val): 0.1143/0.1317
 
                                                                                                                        
 
-Epoch [4/50] | Loss (train/val): 0.4529/0.5477  | Acc (train/val): 0.1331/0.1424
+Best acc now: [0.16611857395835136]
+Epoch [3/20] | Loss (train/val): 0.1264/0.1185  | Acc (train/val): 0.1700/0.1661
 
                                                                                                                        
 
-Epoch [5/50] | Loss (train/val): 0.4246/0.5393  | Acc (train/val): 0.1330/0.1415
+Best acc now: [0.18510334581175064]
+Epoch [4/20] | Loss (train/val): 0.1134/0.1122  | Acc (train/val): 0.1932/0.1851
 
                                                                                                                        
 
-Epoch [6/50] | Loss (train/val): 0.4035/0.5224  | Acc (train/val): 0.1328/0.1404
+Best acc now: [0.19712153978837302]
+Epoch [5/20] | Loss (train/val): 0.1096/0.1103  | Acc (train/val): 0.2060/0.1971
 
                                                                                                                        
 
-Epoch [7/50] | Loss (train/val): 0.3818/0.5179  | Acc (train/val): 0.1326/0.1396
+Best acc now: [0.20541866199291287]
+Epoch [6/20] | Loss (train/val): 0.1084/0.1096  | Acc (train/val): 0.2140/0.2054
 
                                                                                                                        
 
-Epoch [8/50] | Loss (train/val): 0.3635/0.5299  | Acc (train/val): 0.1325/0.1389
+Best acc now: [0.21149342474406016]
+Epoch [7/20] | Loss (train/val): 0.1080/0.1094  | Acc (train/val): 0.2196/0.2115
 
                                                                                                                        
 
-Epoch [9/50] | Loss (train/val): 0.3463/0.5402  | Acc (train/val): 0.1325/0.1386
+Best acc now: [0.2161340064194383]
+Epoch [8/20] | Loss (train/val): 0.1077/0.1094  | Acc (train/val): 0.2236/0.2161
 
                                                                                                                        
 
-Epoch [10/50] | Loss (train/val): 0.3321/0.5288  | Acc (train/val): 0.1325/0.1383
+Best acc now: [0.2197950629041463]
+Epoch [9/20] | Loss (train/val): 0.1076/0.1091  | Acc (train/val): 0.2267/0.2198
 
                                                                                                                        
 
-Epoch [11/50] | Loss (train/val): 0.3175/0.5556  | Acc (train/val): 0.1324/0.1378
+Best acc now: [0.22275732553261277]
+Epoch [10/20] | Loss (train/val): 0.1075/0.1091  | Acc (train/val): 0.2292/0.2228
 
                                                                                                                        
 
-Epoch [12/50] | Loss (train/val): 0.3020/0.5391  | Acc (train/val): 0.1325/0.1374
+Best acc now: [0.2252036067927922]
+Epoch [11/20] | Loss (train/val): 0.1073/0.1089  | Acc (train/val): 0.2312/0.2252
 
                                                                                                                        
 
-Epoch [13/50] | Loss (train/val): 0.2856/0.5692  | Acc (train/val): 0.1324/0.1372
+Best acc now: [0.22725795318615588]
+Epoch [12/20] | Loss (train/val): 0.1072/0.1090  | Acc (train/val): 0.2328/0.2273
 
                                                                                                                        
 
-Epoch [14/50] | Loss (train/val): 0.2696/0.5840  | Acc (train/val): 0.1324/0.1372
+Best acc now: [0.22900757381725065]
+Epoch [13/20] | Loss (train/val): 0.1070/0.1089  | Acc (train/val): 0.2342/0.2290
 
                                                                                                                        
 
-Epoch [15/50] | Loss (train/val): 0.2535/0.6199  | Acc (train/val): 0.1326/0.1372
+Best acc now: [0.23051566570351187]
+Epoch [14/20] | Loss (train/val): 0.1069/0.1088  | Acc (train/val): 0.2354/0.2305
 
                                                                                                                        
 
-Epoch [16/50] | Loss (train/val): 0.2373/0.6189  | Acc (train/val): 0.1326/0.1370
+Best acc now: [0.23182899326775952]
+Epoch [15/20] | Loss (train/val): 0.1067/0.1084  | Acc (train/val): 0.2364/0.2318
 
                                                                                                                        
 
-Epoch [17/50] | Loss (train/val): 0.2228/0.6761  | Acc (train/val): 0.1327/0.1368
+Best acc now: [0.2329830460848441]
+Epoch [16/20] | Loss (train/val): 0.1065/0.1085  | Acc (train/val): 0.2373/0.2330
 
                                                                                                                        
 
-Epoch [18/50] | Loss (train/val): 0.2085/0.6689  | Acc (train/val): 0.1327/0.1366
+Best acc now: [0.23400513753822272]
+Epoch [17/20] | Loss (train/val): 0.1063/0.1082  | Acc (train/val): 0.2380/0.2340
 
                                                                                                                        
 
-Epoch [19/50] | Loss (train/val): 0.1932/0.7258  | Acc (train/val): 0.1328/0.1366
+Best acc now: [0.23491667364898153]
+Epoch [18/20] | Loss (train/val): 0.1060/0.1082  | Acc (train/val): 0.2387/0.2349
 
                                                                                                                        
 
-Epoch [20/50] | Loss (train/val): 0.1822/0.7351  | Acc (train/val): 0.1329/0.1366
+Best acc now: [0.23573468356759217]
+Epoch [19/20] | Loss (train/val): 0.1058/0.1079  | Acc (train/val): 0.2393/0.2357
 
                                                                                                                        
 
-Epoch [21/50] | Loss (train/val): 0.1710/0.7704  | Acc (train/val): 0.1330/0.1366
-
-                                                                                                                       
-
-Epoch [22/50] | Loss (train/val): 0.1613/0.7927  | Acc (train/val): 0.1331/0.1364
-
-                                                                                                                       
-
-Epoch [23/50] | Loss (train/val): 0.1523/0.8274  | Acc (train/val): 0.1331/0.1362
-
-                                                                                                                       
-
-Epoch [24/50] | Loss (train/val): 0.1448/0.8535  | Acc (train/val): 0.1332/0.1361
-
-                                                                                                                       
-
-Epoch [25/50] | Loss (train/val): 0.1392/0.8690  | Acc (train/val): 0.1333/0.1360
-
-                                                                                                                       
-
-Epoch [26/50] | Loss (train/val): 0.1340/0.8692  | Acc (train/val): 0.1334/0.1359
-
-                                                                                                                       
-
-Epoch [27/50] | Loss (train/val): 0.1283/0.9011  | Acc (train/val): 0.1335/0.1357
-
-                                                                                                                       
-
-Epoch [28/50] | Loss (train/val): 0.1233/0.9458  | Acc (train/val): 0.1335/0.1357
-
-                                                                                                                       
-
-Epoch [29/50] | Loss (train/val): 0.1196/0.9376  | Acc (train/val): 0.1336/0.1356
-
-                                                                                                                       
-
-Epoch [30/50] | Loss (train/val): 0.1150/1.0044  | Acc (train/val): 0.1336/0.1356
-
-                                                                                                                       
-
-Epoch [31/50] | Loss (train/val): 0.1102/1.0108  | Acc (train/val): 0.1337/0.1355
-
-                                                                                                                       
-
-Epoch [32/50] | Loss (train/val): 0.1089/0.9784  | Acc (train/val): 0.1337/0.1355
-
-                                                                                                                       
-
-Epoch [33/50] | Loss (train/val): 0.1057/1.0514  | Acc (train/val): 0.1338/0.1354
-
-                                                                                                                       
-
-Epoch [34/50] | Loss (train/val): 0.1034/1.0519  | Acc (train/val): 0.1339/0.1353
-
-                                                                                                                       
-
-Epoch [35/50] | Loss (train/val): 0.1000/1.0654  | Acc (train/val): 0.1339/0.1352
-
-                                                                                                                       
-
-Epoch [36/50] | Loss (train/val): 0.0967/1.1108  | Acc (train/val): 0.1339/0.1351
-
-                                                                                                                       
-
-Epoch [37/50] | Loss (train/val): 0.0949/1.1114  | Acc (train/val): 0.1340/0.1351
-
-                                                                                                                       
-
-Epoch [38/50] | Loss (train/val): 0.0926/1.1776  | Acc (train/val): 0.1340/0.1350
-
-                                                                                                                       
-
-Epoch [39/50] | Loss (train/val): 0.0919/1.1189  | Acc (train/val): 0.1341/0.1349
-
-                                                                                                                       
-
-Epoch [40/50] | Loss (train/val): 0.0911/1.1413  | Acc (train/val): 0.1341/0.1348
-
-                                                                                                                       
-
-Epoch [41/50] | Loss (train/val): 0.0893/1.1670  | Acc (train/val): 0.1341/0.1347
-
-                                                                                                                       
-
-Epoch [42/50] | Loss (train/val): 0.0853/1.1609  | Acc (train/val): 0.1342/0.1346
-
-                                                                                                                       
-
-Epoch [43/50] | Loss (train/val): 0.0833/1.2270  | Acc (train/val): 0.1342/0.1346
-
-                                                                                                                       
-
-Epoch [44/50] | Loss (train/val): 0.0818/1.2512  | Acc (train/val): 0.1342/0.1345
-
-                                                                                                                       
-
-Epoch [45/50] | Loss (train/val): 0.0818/1.2254  | Acc (train/val): 0.1342/0.1344
-
-                                                                                                                       
-
-Epoch [46/50] | Loss (train/val): 0.0810/1.2122  | Acc (train/val): 0.1343/0.1344
-
-                                                                                                                       
-
-Epoch [47/50] | Loss (train/val): 0.0788/1.2418  | Acc (train/val): 0.1343/0.1343
-
-                                                                                                                       
-
-Epoch [48/50] | Loss (train/val): 0.0772/1.2476  | Acc (train/val): 0.1344/0.1342
-
-                                                                                                                       
-
-Epoch [49/50] | Loss (train/val): 0.0759/1.2903  | Acc (train/val): 0.1344/0.1341
-
-                                                                                                                       
-
-Epoch [50/50] | Loss (train/val): 0.0750/1.2866  | Acc (train/val): 0.1344/0.1340
-Final best accuracy [0.15851740252248678]
+Best acc now: [0.23647286261302936]
+Epoch [20/20] | Loss (train/val): 0.1054/0.1079  | Acc (train/val): 0.2399/0.2365
+Final best accuracy [0.23647286261302936]

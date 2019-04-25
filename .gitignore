@@ -9,3 +9,4 @@ data_set
 __pycache__
 *.jpg
 *.png
+*.mat

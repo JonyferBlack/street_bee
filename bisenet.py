@@ -10,7 +10,7 @@ debug = False
 
 class ConvBnRelu(nn.Module):
     def __init__(self, in_planes, out_planes, ksize, stride, pad, dilation=1,
-                 groups=1, has_bn=True, norm_layer=nn.BatchNorm2d, bn_eps=1e-5,
+                 groups=1, has_bn=False, norm_layer=nn.BatchNorm2d, bn_eps=1e-5,
                  has_relu=True, inplace=True, has_bias=False):
         super(ConvBnRelu, self).__init__()
         self.conv = nn.Conv2d(in_planes, out_planes, kernel_size=ksize,
@@ -223,16 +223,10 @@ class BiSeNet(nn.Module):
             print('Final vector')
             print(concate_fm.shape)
         
-        #masks = F.interpolate(masks, scale_factor=scale_factor, mode='nearest')
-        #j = 2
-        #for i in range(-1, 1):
-        #    final_prediction = self.heads[i](pred_out[j])
-        #    j-=1
-        
         final_output = self.heads[-1](pred_out[2])
         aux_1 = self.heads[0](pred_out[0])
         aux_2 = self.heads[1](pred_out[1])
-        
+         
         return final_output, aux_1, aux_2 
 
 
@@ -264,7 +258,7 @@ class SpatialPath(nn.Module):
 
 class BiSeNetHead(nn.Module):
     def __init__(self, in_planes, out_planes, scale,
-                 is_aux=False, norm_layer=nn.BatchNorm2d):
+                 is_aux=True, norm_layer=nn.BatchNorm2d):
         super(BiSeNetHead, self).__init__()
         if is_aux:
             self.conv_3x3 = ConvBnRelu(in_planes, 128, 3, 1, 1,
@@ -274,7 +268,7 @@ class BiSeNetHead(nn.Module):
             self.conv_3x3 = ConvBnRelu(in_planes, 64, 3, 1, 1,
                                        has_bn=True, norm_layer=norm_layer,
                                        has_relu=True, has_bias=False)
-        # self.dropout = nn.Dropout(0.1)
+        self.dropout = nn.Dropout(0.1)
         if is_aux:
             self.conv_1x1 = nn.Conv2d(128, out_planes, kernel_size=1,
                                       stride=1, padding=0)
@@ -282,13 +276,14 @@ class BiSeNetHead(nn.Module):
             self.conv_1x1 = nn.Conv2d(64, out_planes, kernel_size=1,
                                       stride=1, padding=0)
         self.scale = scale
+        self.upsampling1 = nn.ConvTranspose2d(in_channels = out_planes, out_channels = out_planes, kernel_size = 4, stride = 3, padding = 0)
+        self.relu_up1 = nn.ReLU()
+        self.upsampling2 = nn.ConvTranspose2d(in_channels = out_planes, out_channels = out_planes, kernel_size = 4, stride = 3, padding = 0)
 
     def forward(self, x):
         fm = self.conv_3x3(x)
-        # fm = self.dropout(fm)
         output = self.conv_1x1(fm)
-        if self.scale > 1:
-            output = F.interpolate(output, scale_factor=self.scale,
-                                   mode='bilinear',
-                                   align_corners=True)
+        output = self.upsampling1(output)
+        output = self.upsampling2(output)
+        output = self.relu_up1(output)
         return output

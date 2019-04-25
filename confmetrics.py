@@ -43,3 +43,59 @@ def fbeta_score(y_true, y_pred, beta, threshold, eps=1e-9):
         (precision*recall).
         div(precision.mul(beta2) + recall + eps).
         mul(1 + beta2))
+
+def iou(masks_true, masks_pred):
+    """
+    Get the IOU between each predicted mask and each true mask.
+
+    Parameters
+    ----------
+
+    masks_true : array-like
+        A 3D array of shape (n_true_masks, image_height, image_width)
+    masks_pred : array-like
+        A 3D array of shape (n_predicted_masks, image_height, image_width)
+
+    Returns
+    -------
+    array-like
+        A 2D array of shape (n_true_masks, n_predicted_masks), where
+        the element at position (i, j) denotes the IoU between the `i`th true
+        mask and the `j`th predicted mask.
+
+    """
+    if masks_true.shape[1:] != masks_pred.shape[1:]:
+        raise ValueError('Predicted masks have wrong shape!')
+    n_true_masks, height, width = masks_true.shape
+    n_pred_masks = masks_pred.shape[0]
+    m_true = masks_true.copy().reshape(n_true_masks, height * width).T
+    m_pred = masks_pred.copy().reshape(n_pred_masks, height * width)
+    numerator = np.dot(m_pred, m_true)
+    denominator = m_pred.sum(1).reshape(-1, 1) + m_true.sum(0).reshape(1, -1)
+    return numerator / (denominator - numerator)
+
+def evaluate_image(masks_true, masks_pred, thresholds):
+    """
+    Get the average precision for the true and predicted masks of a single image,
+    averaged over a set of thresholds
+
+    Parameters
+    ----------
+    masks_true : array-like
+        A 3D array of shape (n_true_masks, image_height, image_width)
+    masks_pred : array-like
+        A 3D array of shape (n_predicted_masks, image_height, image_width)
+
+    Returns
+    -------
+    float
+        The mean average precision of intersection over union between
+        all pairs of true and predicted region masks.
+
+    """
+    int_o_un = iou(masks_true, masks_pred)
+    benched = int_o_un > thresholds
+    tp = benched.sum(-1).sum(-1)  # noqa
+    fp = (benched.sum(2) == 0).sum(1)
+    fn = (benched.sum(1) == 0).sum(1)
+ 

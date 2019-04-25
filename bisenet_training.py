@@ -8,7 +8,7 @@ import copy
 
 debug = False
 
-def prepare_masks(masks, scale_factor = None, with_aux=True):
+def prepare_masks(masks, outputs, with_aux=True):
     """ Make binary mask for background and object, then interpolate to smaller dimensions for auxillary losses. 
     
     Args:
@@ -20,23 +20,13 @@ def prepare_masks(masks, scale_factor = None, with_aux=True):
         masks_16 (torch.Tensor, optional): interpolated 'masks' for auxillary loss.
         masks_32 (torch.Tensor, optional): interpolated 'masks' for auxillary loss.
     """
-    if scale_factor == None:
-        scale_factor = (0.125, 0.125)
-    
-    if with_aux:
-        masks_16 = scale_to_output(masks, scale_factor)
-        masks_32 = scale_to_output(masks, scale_factor)
-        masks = scale_to_output(masks, scale_factor)
-        
-        masks = torch.cat((1-masks, masks), dim=1)
-        masks_16 = torch.cat((1-masks_16, masks_16), dim=1)
-        masks_32 = torch.cat((1-masks_32, masks_32), dim=1)
 
-        return (masks, masks_16, masks_32)
-    else:
-        masks = torch.cat((1-masks, masks), dim=1)
-        
-        return masks
+    w = outputs.shape[2] / masks.shape[2]
+    h = outputs.shape[3] / masks.shape[3]
+    scale_factor = (w, h)
+    masks = scale_to_output(masks, scale_factor)
+    masks = torch.cat((1-masks, masks), dim=1)
+    return masks
     
  
 def scale_to_output(ground_truth, scale_factor = (0.125, 0.125)):
@@ -103,16 +93,12 @@ def train_step(model, optimizer, train_loader, criterions, device, metric):
             print('out_32')
             print(side_out_32.shape)
         # Loss calculation
-        w = outputs.shape[2] / masks.shape[2]
-        h = outputs.shape[3] / masks.shape[3]
-        if debug:
-            print('W x H')
-            print(w)
-            print(h)
-        loss_masks = prepare_masks(masks, (w, h), with_aux=True)
-        loss = criterions[0](outputs, loss_masks[0])
-        loss += criterions[1](side_out_16, loss_masks[1])
-        loss += criterions[2](side_out_32, loss_masks[2])
+        loss_masks = prepare_masks(masks, outputs, with_aux=True)
+        loss = criterions[0](outputs, loss_masks)
+        loss_masks = prepare_masks(masks, side_out_16, with_aux=True)
+        loss += criterions[1](side_out_16, loss_masks)
+        loss_masks = prepare_masks(masks, side_out_32, with_aux=True)
+        loss += criterions[2](side_out_32, loss_masks)
         # Backward and optimize
         optimizer.zero_grad()
         loss.backward()
@@ -143,7 +129,7 @@ def eval_step(model, eval_loader, criterions, device, metric):
         mean_acc (float): mean accuracy for an evaluation data.
     """
     model.eval()
- 
+    debug = False
     with torch.no_grad():
         mean_loss = 0
         mean_acc = 0
@@ -155,19 +141,20 @@ def eval_step(model, eval_loader, criterions, device, metric):
 
             # Forward pass
             outputs, side_out_16, side_out_32 = model(images)
-            
-            w = outputs.shape[2] / masks.shape[2]
-            h = outputs.shape[3] / masks.shape[3]
             if debug:
-                print('W x H')
-                print(w)
-                print(h)
+                print('outputs')
+                print(outputs.shape)
+                print('out_16')
+                print(side_out_16.shape)
+                print('out_32')
+                print(side_out_32.shape)       
             
-            loss_masks = prepare_masks(masks, (w, h), with_aux=True)
-
-            loss = criterions[0](outputs, loss_masks[0])
-            loss += criterions[1](side_out_16, loss_masks[1])
-            loss += criterions[2](side_out_32, loss_masks[2])
+            loss_masks = prepare_masks(masks, outputs, with_aux=True)
+            loss = criterions[0](outputs, loss_masks)
+            loss_masks = prepare_masks(masks, side_out_16, with_aux=True)
+            loss += criterions[1](side_out_16, loss_masks)
+            loss_masks = prepare_masks(masks, side_out_32, with_aux=True)
+            loss += criterions[2](side_out_32, loss_masks)
             
             # Some statistics
             mean_loss += loss.item()

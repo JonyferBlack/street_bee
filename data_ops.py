@@ -167,7 +167,15 @@ def crop_by_markup(data_dir_path, dest_dir, mean_threshold, augment = False, bbo
     return known_cats
 
 
-def create_segmentation_masks(data_dir_path, dst_img_dir, dst_mask_dir, mean_threshold, re_size = None, augment = False, bbox_dir = None, tolerance = 10):
+def rescale_contour(mask, s = (5, 5)): 
+   """
+   """ 
+   kernel =cv2.getStructuringElement(cv2.MORPH_ELLIPSE, s)  
+   mask = cv2.erode(mask, kernel, iterations = 1)
+   return mask
+
+
+def create_segmentation_masks(data_dir_path, dst_img_dir, dst_mask_dir, mean_threshold, re_size = None, augment = False, bbox_dir = None, tolerance = 10, size =(5, 5)):
     ""
     ""
     poly_key = 'polygon'
@@ -200,7 +208,6 @@ def create_segmentation_masks(data_dir_path, dst_img_dir, dst_mask_dir, mean_thr
         
         mask = np.zeros(image.shape, dtype=np.uint8)
         channel_count = image.shape[2]  # i.e. 3 or 4 depending on your image
-        ignore_mask_color = (255,)*channel_count
         
         for object_ in markup_dict['objects']:
             if (not category_key in object_):
@@ -218,18 +225,20 @@ def create_segmentation_masks(data_dir_path, dst_img_dir, dst_mask_dir, mean_thr
     
             poly = np.flip(poly, 1)
        
-            category_name = object_[category_key]
+            #category_name = object_[category_key]
             #category_dir = os.path.join(dest_dir, str(get_cat_id(known_cats, category_name)))
             # if (not os.path.exists(category_dir)):
             #    os.mkdir(category_dir)
             
             #sample_filename = str(uuid.uuid4())+".png"
             #sample_path = os.path.join(category_dir, sample_filename)    
-            poly = np.array(poly, dtype=np.int32)
-            #cv2.fillPoly(mask, poly, ignore_mask_color)           
-            
+            poly = np.array(poly, dtype=np.int32)        
+
             #cv2.polylines(mask,  [poly],  False,  (0, 255, 0),  10)
-            cv2.fillPoly(mask, np.int_([poly]), (255, 255, 255))
+            temp_mask = np.zeros(image.shape, dtype=np.uint8)
+            cv2.fillPoly(temp_mask, np.int_([poly]), 255)
+            temp_mask = rescale_contour(temp_mask, size)
+            mask = cv2.add(mask, temp_mask)
             
             rect = cv2.boundingRect(poly)
             x,y,w,h = rect
@@ -253,9 +262,6 @@ def create_segmentation_masks(data_dir_path, dst_img_dir, dst_mask_dir, mean_thr
             #cv2.imwrite(sample_path, cropped)
             #break
             
-            if (False and augment and len(os.listdir(category_dir)) < mean_threshold):
-                #augment_by_rotation(cropped, sample_filename, category_dir)
-                print()
             if do_bbox:
                 cv2.polylines(bbox_image,[poly], True,(148,0,211), 2)
 
@@ -266,11 +272,13 @@ def create_segmentation_masks(data_dir_path, dst_img_dir, dst_mask_dir, mean_thr
             #    height = int(img.shape[0] * re_size[1])
             #    dim = (width, height) 
             image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA) 
-            mask = cv2.resize(mask, dim) 
+            mask = cv2.resize(mask, dim, interpolation = cv2.INTER_AREA) 
         
         cv2.imwrite(img_save_path, image)
-        mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY);
-        cv2.threshold(mask, 127, 255, cv2.THRESH_BINARY)
+        mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
+        mask = cv2.threshold(mask, 127, 255, cv2.THRESH_BINARY)
+        max_v = mask.max()
+        mask *= int(255/(max_v + 0.1))
         cv2.imwrite(mask_save_path, mask)
         #break
         image = None
